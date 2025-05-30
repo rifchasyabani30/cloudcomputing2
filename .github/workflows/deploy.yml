@@ -18,12 +18,12 @@ jobs:
 
       - name: Copy Files to Server
         run: |
-          scp -o StrictHostKeyChecking=no -r . ubuntu@15.235.163.201:/home/ubuntu/odoo-18-docker-compose-master
+          scp -o StrictHostKeyChecking=no -r . ubuntu@15.235.163.201:/home/ubuntu/odoo-deploy
 
       - name: Restart Containers
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@15.235.163.201 "
-            cd /home/ubuntu/odoo-18-docker-compose-master &&
+            cd /home/ubuntu/odoo-deploy &&
             docker compose down &&
             docker compose pull &&
             docker compose up -d
